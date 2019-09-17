@@ -21,13 +21,13 @@ module.exports = {
                                 '@babel/preset-env',
                                 '@babel/preset-react'
                             ],
-                            plugins: ['@babel/plugin-proposal-class-properties'] // todo: I may not need it eventually as now I've got neat hooks
+                            // plugins: ['babel-plugin-styled-components']
                         }
                     }
                 ]
             },
             {
-                test: /\.(scss|sass)$/,
+                test: /\.(scss|sass|css)$/,
                 exclude: /^_/,
                 use: ['style-loader', 'css-loader', 'sass-loader']
             },
