@@ -1,0 +1,26 @@
+$bp-large: 640px;
+
+@mixin bp-min($width) {
+  @media screen and (min-width: $width) {
+    @content;
+  }
+}
+
+@mixin bp-max($width) {
+  @media screen and (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin bp-between($min-width, $max-width) {
+  @media screen and (min-width: $min-width) and (max-width: $max-width) {
+    @content;
+  }
+}
+
+// PRESETS:
+@mixin min-large() {
+  @include bp-min($bp-large) {
+    @content;
+  }
+}

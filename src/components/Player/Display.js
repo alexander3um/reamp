@@ -9,11 +9,8 @@ export function Display(props) {
 
     return (
         <div className="player__display">
-            <div className="player__info">
-                <div className="player__title">{currentTrack ? currentTrack.name : 'no track'}</div>
-                <div className="player__track-number">{currentTrack ? `Track #${currentTrackNumber + 1}` : 'no track'}</div>
-            </div>
-            <div className="player__visuals"></div>
+            <div className="player__title">{currentTrack ? currentTrack.name : 'no track'}</div>
+            <div className="player__track-number">{currentTrack ? `Track #${currentTrackNumber + 1}` : 'use the add button or drag something here'}</div>
         </div>
     );
 }
