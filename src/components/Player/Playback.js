@@ -47,6 +47,7 @@ export function Playback() {
             player.current.src = currentTrackBlobURL;
             return () => URL.revokeObjectURL(currentTrackBlobURL);
         }
+        player.current.src = null;
     }, [currentTrack]);
 
     useEffect(() => {

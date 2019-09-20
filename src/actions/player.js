@@ -15,7 +15,6 @@ export const SET_MUTED = 'SET_MUTED';
 export const SET_PAN = 'SET_PAN';
 export const SET_AUTOPLAY = 'SET_AUTOPLAY';
 
-export const playPause = () => (dispatch, getState) => dispatch({type: SET_PLAYBACK, payload: !getState().player.isPlaying});
 export const setMuted = (payload) => ({type: SET_MUTED, payload});
 export const setVolume = (payload) => ({type: SET_VOLUME, payload});
 export const setCurrentTime = (payload) => ({type: SET_CURRENT_TIME, payload});
@@ -26,6 +25,13 @@ export const setCurrentTrack = (payload) => ({type: SET_CURRENT_TRACK, payload})
 export const setDuration = (payload) => ({type: SET_DURATION, payload});
 export const setPan = (payload) => ({type: SET_PAN, payload});
 
+export const playPause = () => (dispatch, getState) => {
+    const {player} = getState();
+    if (player.currentTrack !== null) {
+        dispatch({type: SET_PLAYBACK, payload: !player.isPlaying});
+    }
+};
+
 export const addTracksFromInput = (files) => (dispatch, getState) => batch(() => {
     const {player} = getState();
     dispatch({type: ADD_TRACKS, payload: Array.from(files)});
@@ -34,6 +40,14 @@ export const addTracksFromInput = (files) => (dispatch, getState) => batch(() =>
     }
     if (player.autoplay && !player.isPlaying) {
         dispatch({type: SET_PLAYBACK, payload: true});
+    }
+});
+
+export const removeTrack = (payload) => (dispatch, getState) => batch(() => {
+    dispatch({type: REMOVE_TRACK, payload});
+    if (getState().player.trackList.length < 1) {
+        dispatch({type: SET_CURRENT_TRACK, payload: null});
+        dispatch({type: SET_PLAYBACK, payload: false});
     }
 });
 
