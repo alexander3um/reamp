@@ -8,7 +8,7 @@ import {Buttons} from "./Buttons";
 import {Progress} from "./Progress";
 import {Volume} from "./Volume";
 import {DND} from "./DND";
-import {setDndWindowDisplay} from "../../actions/ui";
+import {addMessage, setDndWindowDisplay} from "../../actions/ui";
 import {addTracksFromInput} from "../../actions/player";
 
 export function Player() {
@@ -19,7 +19,7 @@ export function Player() {
             const extensions = /(\.mp3|\.wav)$/;
             for (let file of item.files) {
                 if (!extensions.test(file.name)) {
-                    return console.log('pizdec'); // todo: civilized error message
+                    return dispatch(addMessage('Only .mp3 or .wav extensions are supported'));
                 }
             }
             dispatch(addTracksFromInput(item.files));

@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {Playlist} from "./components/Playlist/Playlist";
 import {Player} from "./components/Player/Player";
+import {Messages} from "./components/Messages/Messages";
 
 export function Application() {
     const dispatch = useDispatch();
@@ -13,6 +14,7 @@ export function Application() {
 
     return (
         <section className="window">
+            <Messages/>
             <Player/>
             <Playlist/>
         </section>
