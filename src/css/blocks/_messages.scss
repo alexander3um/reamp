@@ -1,0 +1,36 @@
+.messages {
+  position: absolute;
+  width: 300px;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  &__message {
+    background: rgba(#726d8b, 0.5);
+    padding: 15px 22px;
+    color: #bababa;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(black, 0.2);
+
+    > span, > button {
+      display: block;
+    }
+
+    > button {
+      margin-left: 10px;
+      font-size: 15px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    > span {
+      line-height: 18px;
+      font-size: 13px;
+    }
+  }
+}

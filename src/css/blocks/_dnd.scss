@@ -1,0 +1,55 @@
+.dnd {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(#899dcc, 0.75);
+  left: 0;
+  top: 0;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+
+  > div {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    color: darken(#534866, 5%);
+
+    @keyframes dnd-icon-jumping {
+      0%, 100% {
+        transform: translateY(10%);
+      }
+      50% {
+        transform: translateY(-10%);
+      }
+    }
+
+    svg {
+      margin-right: 12px;
+      font-size: 32px;
+      animation: dnd-icon-jumping 1s infinite;
+    }
+
+    span {
+      display: block;
+      font-weight: $font-os-bold;
+      font-size: 28px;
+    }
+  }
+
+  &::before {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 95%;
+    height: 89%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    border: 5px dashed #534866;
+    border-radius: 30px;
+  }
+}

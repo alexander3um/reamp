@@ -1,0 +1,166 @@
+.player {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  align-items: stretch;
+
+  @include min-large {
+    width: 632px;
+    align-items: center;
+  }
+
+  &__box {
+    background: linear-gradient(70deg, #5c5071 25%, #43497b);
+    border: 1px solid #423d55;
+    padding: 21px 34px 20px;
+    width: 100%;
+    flex-shrink: 1;
+    box-shadow: 0 0 97px rgba(black, 0.50);
+    flex-grow: 1;
+    position: relative;
+    z-index: 2;
+
+    @include min-large {
+      width: 400px;
+      padding: 60px 90px 49px;
+      border-radius: 30px;
+    }
+  }
+
+  &__volume-box {
+    width: 50px;
+    background: #5c5071;
+    box-shadow: 0 0 50px rgba(black, 0.25);
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    padding: 23px 0 15px 2px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    z-index: 1;
+
+    @include min-large {
+      border-radius: 20px 0 0 20px;
+      height: 180px;
+    }
+
+    .slider {
+      height: 70%;
+    }
+  }
+
+  &__volume-icon {
+    background: #726d8b;
+    border-radius: 100%;
+    padding: 5px;
+    color: white;
+    font-size: 14px;
+    margin-top: 11px;
+    margin-left: 2px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__display {
+    text-align: center;
+
+    @include min-large {
+      text-align: left;
+    }
+  }
+
+  &__title {
+    font-size: 18px;
+    font-weight: $font-os-semibold;
+    color: white;
+  }
+
+  &__track-number {
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: $font-os-bold;
+    margin-top: 12px;
+    color: rgba(white, 0.70);
+  }
+
+  &__progress {
+    margin: 19px 0 14px;
+    padding: 0 6px;
+  }
+
+  &__buttons-box {
+    display: flex;
+    justify-content: center;
+    padding-right: 28px;
+
+    @include min-large {
+      justify-content: flex-start;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+  }
+
+  &__button {
+    color: rgba(white, 0.7);
+    font-size: 12px;
+
+    &:hover {
+      cursor: pointer;
+      color: rgba(white, 0.9);
+    }
+
+    &--add {
+      font-size: 14px;
+      margin-right: 18px;
+      position: relative;
+      overflow: hidden;
+
+      input {
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        cursor: pointer;
+        font-size: 100px;
+      }
+    }
+
+    &--backward, &--forward {
+      margin-top: 1px;
+    }
+
+    &--play-pause {
+      border: 1px solid rgba(white, 0.5);
+      border-radius: 100%;
+      width: 30px;
+      height: 30px;
+      transition: box-shadow 700ms;
+      margin: 0 12px;
+
+      &:hover {
+        background: rgba(white, 0.1);
+      }
+
+      &:active {
+        box-shadow: 0 0 0 5px rgba(white, 0.25);
+        transition: none;
+      }
+
+      svg.fa-play {
+        margin-left: 2px;
+        margin-top: 2px;
+      }
+
+      svg.fa-pause {
+        margin-top: 1px;
+      }
+    }
+  }
+}

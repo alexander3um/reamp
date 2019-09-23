@@ -1,0 +1,99 @@
+.playlist {
+  width: 100%;
+  margin-top: 0px;
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
+  @include min-large {
+    width: 400px;
+    margin-top: 50px;
+  }
+
+  &::before {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #2b2939, #13234c);
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    z-index: -1;
+    box-shadow: 0 0 50px 10px rgba(#ffc9f6, 0.15);
+
+    @include min-large {
+      width: 360px;
+      border-radius: 15px;
+    }
+  }
+
+  &__empty {
+    font-weight: $font-os-bold;
+    padding: 27px 60px;
+    color: #a5a6ae;
+  }
+
+  &__track {
+    font-size: 15px;
+    font-weight: $font-os-bold;
+    color: #a5a6ae;
+    padding: 16px 47px 14px;
+    margin: 7px 0;
+    box-sizing: border-box;
+    position: relative;
+    width: 80%;
+
+    @include min-large {
+      border-radius: 10px;
+      width: 100%;
+    }
+
+    &:first-child {
+      margin-top: 24px;
+    }
+
+    &:last-child {
+      margin-bottom: 24px;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:hover, &--current {
+      background: linear-gradient(198deg, #5c5071 43%, #43497b);
+      border-radius: 10px;
+      color: white;
+      box-shadow: 0 12px 23px rgba(0, 0, 0, 0.35);
+
+      .playlist__track-remove {
+        display: block;
+      }
+    }
+
+    > button:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__track-button {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__track-remove {
+    background: #726d8b;
+    border-radius: 100%;
+    color: white;
+    font-size: 14px;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    right: 20px;
+    top: 12px;
+    display: none;
+  }
+}
