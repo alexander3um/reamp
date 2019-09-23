@@ -4,7 +4,7 @@ import {useSelector} from "react-redux";
 export function Display(props) {
     const {currentTrack, currentTrackNumber} = useSelector(({player}) => ({
         currentTrack: player.trackList[player.currentTrack],
-        currentTrackNumber: player.currentTrack,
+        currentTrackNumber: player.currentTrack
     }));
 
     return (

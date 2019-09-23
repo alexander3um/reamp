@@ -1,21 +1,13 @@
-import React, {useRef} from 'react';
+import React from 'react';
 import {useSelector, useDispatch} from "react-redux";
-import Slider from 'rc-slider';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlay, faPause, faBackward, faForward, faPlus} from "@fortawesome/free-solid-svg-icons";
-import {setPan, setAutoplay, nextTrack, prevTrack, playPause, addTracksFromInput} from "../../actions/player";
+import {nextTrack, prevTrack, playPause, addTracksFromInput} from "../../actions/player";
 
 export function Buttons() {
     const dispatch = useDispatch();
-    const {isPlaying, pan, autoplay, currentTrack, trackListLength} = useSelector(({player}) => ({
-        isPlaying: player.isPlaying,
-        pan: player.pan,
-        autoplay: player.autoplay,
-        currentTrack: player.currentTrack,
-        trackListLength: player.trackList.length
-    }));
+    const {isPlaying} = useSelector(({player}) => ({isPlaying: player.isPlaying}));
 
-    // todo: unplayable unless there's a track
     return (
         <div className="player__buttons-box">
             <button className="player__button player__button--add" type="button">
@@ -33,9 +25,6 @@ export function Buttons() {
                     <FontAwesomeIcon icon={faForward}/>
                 </button>
             </div>
-            {/*<Slider className="player__pan slider slider--horizontal slider--pan" value={pan} min={-1} max={1} step={0.1} onChange={(value) => dispatch(setPan(value))}/>*/}
-            {/*<input type="checkbox" name="autoplay" checked={autoplay} onChange={() => dispatch(setAutoplay(!autoplay))}/>*/}
-            {/*<label htmlFor="autoplay" title="Starts playing stuff automatically when you add it, also switches tracks after when they end">Autoplay</label>*/}
         </div>
     );
 }

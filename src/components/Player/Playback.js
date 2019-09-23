@@ -4,26 +4,15 @@ import {playbackProgress, setDuration, trackEnded} from "../../actions/player";
 
 export function Playback() {
     const dispatch = useDispatch();
-    const {isPlaying, currentTrack, volume, isMuted, isCurrentTimeSynced, lastTimeChange, trackList, currentTrackNumber, autoplay, pan} = useSelector(({player}) => ({
+    const {isPlaying, currentTrack, volume, isMuted, lastTimeChange} = useSelector(({player}) => ({
         isPlaying: player.isPlaying,
         currentTrack: player.trackList[player.currentTrack],
-        currentTrackNumber: player.currentTrack,
-        trackList: player.trackList,
-        isCurrentTimeSynced: player.isCurrentTimeSynced,
         lastTimeChange: player.lastTimeChange,
         volume: player.volume,
-        isMuted: player.isMuted,
-        pan: player.pan,
-        autoplay: player.autoplay
+        isMuted: player.isMuted
     }));
 
     const player = useRef(null);
-    // const [context] = useState(new AudioContext());
-    // const [panner] = useState(new StereoPannerNode(context));
-
-    // useEffect(() => {
-    //     context.createMediaElementSource(player.current).connect(panner).connect(context.destination);
-    // }, [true]);
 
     useEffect(() => {
         player.current.volume = volume;
@@ -36,10 +25,6 @@ export function Playback() {
             player.current.volume = volume;
         }
     }, [isMuted]);
-
-    // useEffect(() => {
-    //     panner.pan.value = pan; // блин, я знаю, что нельзя мутировать стейт без сетСтейт, но а как тут ещё это было сделать?
-    // }, [pan]);
 
     useEffect(() => {
         if (currentTrack) {
